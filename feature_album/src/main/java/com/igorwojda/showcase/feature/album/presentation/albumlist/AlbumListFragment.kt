@@ -1,9 +1,13 @@
 package com.igorwojda.showcase.feature.album.presentation.albumlist
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import com.igorwojda.showcase.app.presentation.NavHostActivity
 import com.igorwojda.showcase.feature.album.R
+import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailActivity
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.GridAutofitLayoutManager
 import com.igorwojda.showcase.library.base.presentation.extension.observe
@@ -32,7 +36,12 @@ class AlbumListFragment : BaseContainerFragment() {
         val context = checkNotNull(context)
 
         albumAdapter.setOnDebouncedClickListener {
-            viewModel.navigateToAlbumDetails(it.artist, it.name, it.mbId)
+            // Navigate to activity using a good old intent
+            val intent = Intent(requireActivity(), AlbumDetailActivity::class.java)
+            startActivity(intent)
+
+            // Navigate to details fragment using the navigation component
+//            viewModel.navigateToAlbumDetails(it.artist, it.name, it.mbId)
         }
 
         recyclerView.apply {

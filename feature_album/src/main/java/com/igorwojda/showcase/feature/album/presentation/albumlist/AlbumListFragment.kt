@@ -1,11 +1,11 @@
 package com.igorwojda.showcase.feature.album.presentation.albumlist
 
-import android.app.Activity
-import android.content.Intent
+import android.content.ComponentName
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import com.igorwojda.showcase.app.presentation.NavHostActivity
+import androidx.navigation.ActivityNavigator
+import androidx.navigation.fragment.findNavController
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailActivity
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
@@ -37,8 +37,10 @@ class AlbumListFragment : BaseContainerFragment() {
 
         albumAdapter.setOnDebouncedClickListener {
             // Navigate to activity using a good old intent
-            val intent = Intent(requireActivity(), AlbumDetailActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(requireActivity(), AlbumDetailActivity::class.java)
+//            startActivity(intent)
+
+            navigateToActivityUsingNavController()
 
             // Navigate to details fragment using the navigation component
 //            viewModel.navigateToAlbumDetails(it.artist, it.name, it.mbId)
@@ -57,5 +59,20 @@ class AlbumListFragment : BaseContainerFragment() {
 
         observe(viewModel.stateLiveData, stateObserver)
         viewModel.loadData()
+    }
+
+    private fun navigateToActivityUsingNavController() {
+        val navController = findNavController()
+
+        navController.graph.addDestination(
+            navController.navigatorProvider.getNavigator(ActivityNavigator::class.java)
+                .createDestination().apply {
+                    // TODO this hack id works but is not pretty, find out a better way of doing it
+                    id = R.id.underConstructionTextView
+                    setComponentName(ComponentName(requireContext(), AlbumDetailActivity::class.java))
+                }
+        )
+
+        navController.navigate(R.id.underConstructionTextView)
     }
 }

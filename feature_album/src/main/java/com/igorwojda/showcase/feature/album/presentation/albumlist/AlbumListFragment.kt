@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.navigation.ActivityNavigator
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import com.igorwojda.showcase.feature.album.R
 import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailActivity
+import com.igorwojda.showcase.feature.album.presentation.albumdetail.AlbumDetailFragment2
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.AlbumAdapter
 import com.igorwojda.showcase.feature.album.presentation.albumlist.recyclerview.GridAutofitLayoutManager
 import com.igorwojda.showcase.library.base.presentation.extension.observe
@@ -40,7 +42,9 @@ class AlbumListFragment : BaseContainerFragment() {
 //            val intent = Intent(requireActivity(), AlbumDetailActivity::class.java)
 //            startActivity(intent)
 
-            navigateToActivityUsingNavController()
+//            navigateToActivityUsingNavController()
+
+            navigateToFragmentUsingNavController()
 
             // Navigate to details fragment using the navigation component
 //            viewModel.navigateToAlbumDetails(it.artist, it.name, it.mbId)
@@ -74,5 +78,20 @@ class AlbumListFragment : BaseContainerFragment() {
         )
 
         navController.navigate(R.id.underConstructionTextView)
+    }
+
+    private fun navigateToFragmentUsingNavController() {
+        val navController = findNavController()
+
+        navController.graph.addDestination(
+            navController.navigatorProvider.getNavigator(FragmentNavigator::class.java)
+                .createDestination().apply {
+                    // TODO this hack id works but is not pretty, find out a better way of doing it
+                    id = R.id.underConstructionAnimation
+                    className = AlbumDetailFragment2::class.java.name
+                }
+        )
+
+        navController.navigate(R.id.underConstructionAnimation)
     }
 }

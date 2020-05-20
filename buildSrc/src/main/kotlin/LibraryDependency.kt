@@ -6,7 +6,6 @@ private object LibraryVersion {
     const val OK_HTTP = "4.7.2"
     const val STETHO = "1.5.0"
     const val TIMBER = "4.7.1"
-    const val PLAY_CORE = "1.7.3"
     const val APP_COMPAT = "1.1.0"
     const val RECYCLER_VIEW = "1.1.0"
     const val COORDINATOR_LAYOUT = "1.1.0"
@@ -43,7 +42,6 @@ object LibraryDependency {
     const val TIMBER = "com.jakewharton.timber:timber:${LibraryVersion.TIMBER}"
     const val SUPPORT_CONSTRAINT_LAYOUT =
         "androidx.constraintlayout:constraintlayout:${LibraryVersion.CONSTRAINT_LAYOUT}"
-    const val PLAY_CORE = "com.google.android.play:core:${LibraryVersion.PLAY_CORE}"
     const val APP_COMPAT = "androidx.appcompat:appcompat:${LibraryVersion.APP_COMPAT}"
     const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${LibraryVersion.RECYCLER_VIEW}"
     const val COORDINATOR_LAYOUT = "androidx.coordinatorlayout:coordinatorlayout:${LibraryVersion.COORDINATOR_LAYOUT}"

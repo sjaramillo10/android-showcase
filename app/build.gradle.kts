@@ -71,7 +71,6 @@ dependencies {
 
     implementation(LibraryDependency.OK_HTTP)
     implementation(LibraryDependency.LOGGING_INTERCEPTOR)
-    implementation(LibraryDependency.PLAY_CORE)
     implementation(LibraryDependency.STETHO)
     implementation(LibraryDependency.STETHO_OK_HTTP)
 

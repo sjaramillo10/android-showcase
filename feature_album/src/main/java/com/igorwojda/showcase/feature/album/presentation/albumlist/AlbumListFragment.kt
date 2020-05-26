@@ -44,10 +44,10 @@ class AlbumListFragment : BaseContainerFragment() {
 
 //            navigateToActivityUsingNavController()
 
-            navigateToFragmentUsingNavController()
+//            navigateToFragmentUsingNavController()
 
             // Navigate to details fragment using the navigation component
-//            viewModel.navigateToAlbumDetails(it.artist, it.name, it.mbId)
+            viewModel.navigateToAlbumDetails(it.artist, it.name, it.mbId)
         }
 
         recyclerView.apply {

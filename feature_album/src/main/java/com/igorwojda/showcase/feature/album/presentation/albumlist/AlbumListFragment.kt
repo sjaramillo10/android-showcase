@@ -1,6 +1,7 @@
 package com.igorwojda.showcase.feature.album.presentation.albumlist
 
 import android.content.ComponentName
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
@@ -47,7 +48,7 @@ class AlbumListFragment : BaseContainerFragment() {
 //            navigateToFragmentUsingNavController()
 
             // Navigate to details fragment using the navigation component
-            viewModel.navigateToAlbumDetails(it.artist, it.name, it.mbId)
+//            viewModel.navigateToAlbumDetails(it.artist, it.name, it.mbId)
         }
 
         recyclerView.apply {

@@ -26,6 +26,9 @@ class NavHostActivity : BaseActivity() {
 
     private fun initBottomNavigation() {
         bottomNav.setupWithNavController(navController)
+
+        // Hide one element from the BottomNav
+//        bottomNav.menu.removeItem(R.id.featureFavouriteNavGraph)
     }
 
     private fun initNavManager() {

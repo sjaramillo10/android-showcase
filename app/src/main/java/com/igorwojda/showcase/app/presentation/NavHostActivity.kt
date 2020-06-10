@@ -3,6 +3,7 @@ package com.igorwojda.showcase.app.presentation
 import android.os.Bundle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.igorwojda.showcase.R
 import com.igorwojda.showcase.library.base.presentation.activity.BaseActivity
 import com.igorwojda.showcase.library.base.presentation.navigation.NavManager
@@ -28,7 +29,10 @@ class NavHostActivity : BaseActivity() {
         bottomNav.setupWithNavController(navController)
 
         // Hide one element from the BottomNav
-//        bottomNav.menu.removeItem(R.id.featureFavouriteNavGraph)
+        val manager = SplitInstallManagerFactory.create(this)
+        if (!manager.installedModules.contains("feature_favourite")) {
+            bottomNav.menu.removeItem(R.id.featureFavouriteNavGraph)
+        }
     }
 
     private fun initNavManager() {
